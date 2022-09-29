@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.SeekBar
 import androidx.appcompat.app.AlertDialog
 import com.cubiclab.bullseye.databinding.ActivityMainBinding
+import java.lang.Math.abs
 import java.util.Random
 
 //import kotlin.random.Random
@@ -46,15 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun pointsForCurrentRound(): Int {
         val maxScore = 100
-        val difference: Int
-
-        if(sliderValue > targetValue) {
-            difference = sliderValue - targetValue
-        } else if(targetValue > sliderValue) {
-            difference = targetValue - sliderValue
-        } else {
-            difference = 0
-        }
+        val difference = abs(targetValue - sliderValue)
         return maxScore - difference
     }
 
